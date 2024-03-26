@@ -58,7 +58,7 @@ public class MQClient {
 
                 @Override
                 public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
-                    System.out.println("Delivered: " + iMqttDeliveryToken);
+                    System.out.println("Delivered: " + iMqttDeliveryToken.getMessageId());
                 }
             });
 

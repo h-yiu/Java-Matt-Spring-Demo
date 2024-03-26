@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 @RestController
 @RequestMapping(value = "/mqtt")
@@ -22,7 +23,7 @@ public class MQTTController {
         String username = "root";
         String password = "root";
         String topic = "my_topic";
-        String msgStr = "There is a new message @ " + new Date();
+        String msgStr = "There is a new message @ " + LocalDateTime.now(ZoneOffset.UTC);
 
         if (mqServiceImpl.initializeClient(host, port, "harvey1102", username, password)) {
             mqServiceImpl.publishMessage(topic, msgStr.getBytes());
